@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Twój Wymiar – stolarnia na miarę</title>
+  <meta name="description" content="Kuchnie, łazienki, szafy i zabudowy na zamówienie. Projektowanie i montaż mebli dopasowanych do Twojej przestrzeni." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hero { min-height: calc(100vh - 70px); display: flex; align-items: center; background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg-main) 50%, rgba(166, 124, 82, 0.08) 100%); }
+    .hero-content { max-width: 640px; }
+    .hero-badge { display: inline-block; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .hero-title { font-family: "Cormorant Garamond", serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .hero-text { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.7; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .preview-card { aspect-ratio: 4/3; background: linear-gradient(145deg, #e8e2d8, #d9d0c2); border-radius: 12px; overflow: hidden; transition: transform 0.3s; }
+    .preview-card:hover { transform: scale(1.02); }
+    @media (max-width: 768px) { .preview-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><div class="logo-mark"></div><span class="logo-text">Twój Wymiar</span></a>
+      <div class="nav-links">
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="uslugi.html" class="nav-link">Usługi</a>
+        <a href="o-nas.html" class="nav-link">O nas</a>
+        <a href="kontakt.html" class="nav-link">Kontakt</a>
+        <a href="umowienie.html" class="nav-link">Umów realizację</a>
+      </div>
+      <button class="theme-btn" id="themeBtn" aria-label="Zmień motyw">☀</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+  <main class="main">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-badge">Stolarnia na zamówienie</span>
+          <h1 class="hero-title">Meble dopasowane do Twojej przestrzeni</h1>
+          <p class="hero-text">Projektujemy i montujemy kuchnie, łazienki, szafy oraz zabudowy. Każdy projekt jest tworzony indywidualnie – z dbałością o detal i Twoje oczekiwania.</p>
+          <div class="hero-actions">
+            <a href="portfolio.html" class="btn btn-primary">Zobacz realizacje</a>
+            <a href="umowienie.html" class="btn btn-outline">Umów realizację</a>
+          </div>
+          <div class="preview-grid">
+            <div class="preview-card"></div>
+            <div class="preview-card"></div>
+            <div class="preview-card"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="index.html" class="logo"><div class="logo-mark"></div><span class="logo-text">Twój Wymiar</span></a>
+      <nav class="footer-links">
+        <a href="portfolio.html">Portfolio</a>
+        <a href="uslugi.html">Usługi</a>
+        <a href="o-nas.html">O nas</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="umowienie.html">Umów realizację</a>
+      </nav>
+      <span class="footer-copy">© 2025 Twój Wymiar. Wszelkie prawa zastrzeżone.</span>
+    </div>
+  </footer>
+  <script src="common.js"></script>
+</body>
+</html>
