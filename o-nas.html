@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>O nas – Twój Wymiar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .about-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: center; }
+    .about-image { aspect-ratio: 4/5; background: linear-gradient(145deg, #e0d9ce, #c9bfb0); border-radius: 16px; overflow: hidden; }
+    .about-content h2 { font-family: "Cormorant Garamond", serif; font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; }
+    .about-content p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.75; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .stat { text-align: center; padding: 1.25rem; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); }
+    .stat-number { font-family: "Cormorant Garamond", serif; font-size: 2.25rem; font-weight: 600; color: var(--accent); display: block; }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
+    @media (max-width: 768px) { .about-layout { grid-template-columns: 1fr; } .stats { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><div class="logo-mark"></div><span class="logo-text">Twój Wymiar</span></a>
+      <div class="nav-links">
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="uslugi.html" class="nav-link">Usługi</a>
+        <a href="o-nas.html" class="nav-link active">O nas</a>
+        <a href="kontakt.html" class="nav-link">Kontakt</a>
+        <a href="umowienie.html" class="nav-link">Umów realizację</a>
+      </div>
+      <button class="theme-btn" id="themeBtn" aria-label="Zmień motyw">☀</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+  <main class="main">
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title">O nas</h1>
+        <p class="section-subtitle">Kim jesteśmy</p>
+        <div class="about-layout">
+          <div class="about-image"></div>
+          <div class="about-content">
+            <h2>Stolarnia z pasją do detalu</h2>
+            <p>Twój Wymiar powstał z przekonania, że meble powinny idealnie wpasowywać się w przestrzeń – nie odwrotnie. Od lat projektujemy i montujemy kuchnie, łazienki, szafy oraz zabudowy, które łączą funkcjonalność z estetyką.</p>
+            <p>Każdy projekt traktujemy indywidualnie. Zaczynamy od rozmowy o Twoich potrzebach, następnie przygotowujemy koncepcję i wycenę. Dzięki własnemu warsztatowi mamy pełną kontrolę nad jakością i terminami realizacji.</p>
+            <div class="stats">
+              <div class="stat"><span class="stat-number" data-count="120">0</span><span class="stat-label">Zrealizowanych projektów</span></div>
+              <div class="stat"><span class="stat-number" data-count="8">0</span><span class="stat-label">Lat doświadczenia</span></div>
+              <div class="stat"><span class="stat-number" data-count="100">0</span><span class="stat-label">% zadowolonych klientów</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="index.html" class="logo"><div class="logo-mark"></div><span class="logo-text">Twój Wymiar</span></a>
+      <nav class="footer-links">
+        <a href="portfolio.html">Portfolio</a>
+        <a href="uslugi.html">Usługi</a>
+        <a href="o-nas.html">O nas</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="umowienie.html">Umów realizację</a>
+      </nav>
+      <span class="footer-copy">© 2025 Twój Wymiar. Wszelkie prawa zastrzeżone.</span>
+    </div>
+  </footer>
+  <script src="common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const stats = document.querySelectorAll('.stat-number[data-count]');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.count, 10);
+            let current = 0;
+            const step = target / 50;
+            const timer = setInterval(() => {
+              current += step;
+              el.textContent = current >= target ? target : Math.floor(current);
+              if (current >= target) clearInterval(timer);
+            }, 30);
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.3 });
+      stats.forEach(s => observer.observe(s));
+    });
+  </script>
+</body>
+</html>

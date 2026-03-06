@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio – Twój Wymiar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    .portfolio-card { background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; }
+    .portfolio-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .portfolio-img { aspect-ratio: 4/3; background: linear-gradient(145deg, #e5dfd5, #d4c9b8); transition: transform 0.4s; }
+    .portfolio-card:hover .portfolio-img { transform: scale(1.05); }
+    .portfolio-body { padding: 1.25rem; }
+    .portfolio-category { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.35rem; }
+    .portfolio-title { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; font-weight: 600; }
+    .filter-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .filter-btn { padding: 0.5rem 1rem; font-size: 0.85rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-muted); transition: all 0.2s; }
+    .filter-btn:hover, .filter-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(166, 124, 82, 0.08); }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><div class="logo-mark"></div><span class="logo-text">Twój Wymiar</span></a>
+      <div class="nav-links">
+        <a href="portfolio.html" class="nav-link active">Portfolio</a>
+        <a href="uslugi.html" class="nav-link">Usługi</a>
+        <a href="o-nas.html" class="nav-link">O nas</a>
+        <a href="kontakt.html" class="nav-link">Kontakt</a>
+        <a href="umowienie.html" class="nav-link">Umów realizację</a>
+      </div>
+      <button class="theme-btn" id="themeBtn" aria-label="Zmień motyw">☀</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+  <main class="main">
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title">Portfolio</h1>
+        <p class="section-subtitle">Zrealizowane projekty</p>
+        <div class="filter-bar">
+          <button class="filter-btn active">Wszystkie</button>
+          <button class="filter-btn">Kuchnie</button>
+          <button class="filter-btn">Łazienki</button>
+          <button class="filter-btn">Szafy</button>
+          <button class="filter-btn">Zabudowy</button>
+        </div>
+        <div class="portfolio-grid">
+          <article class="portfolio-card"><div class="portfolio-img"></div><div class="portfolio-body"><span class="portfolio-category">Kuchnia</span><h2 class="portfolio-title">Kuchnia otwarta na salon</h2></div></article>
+          <article class="portfolio-card"><div class="portfolio-img"></div><div class="portfolio-body"><span class="portfolio-category">Łazienka</span><h2 class="portfolio-title">Zabudowa łazienkowa</h2></div></article>
+          <article class="portfolio-card"><div class="portfolio-img"></div><div class="portfolio-body"><span class="portfolio-category">Szafa</span><h2 class="portfolio-title">Garderoba w sypialni</h2></div></article>
+          <article class="portfolio-card"><div class="portfolio-img"></div><div class="portfolio-body"><span class="portfolio-category">Zabudowa</span><h2 class="portfolio-title">Obudowa kominka</h2></div></article>
+          <article class="portfolio-card"><div class="portfolio-img"></div><div class="portfolio-body"><span class="portfolio-category">Kuchnia</span><h2 class="portfolio-title">Kuchnia w stylu skandynawskim</h2></div></article>
+          <article class="portfolio-card"><div class="portfolio-img"></div><div class="portfolio-body"><span class="portfolio-category">Łazienka</span><h2 class="portfolio-title">Szafki pod umywalkę</h2></div></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="index.html" class="logo"><div class="logo-mark"></div><span class="logo-text">Twój Wymiar</span></a>
+      <nav class="footer-links">
+        <a href="portfolio.html">Portfolio</a>
+        <a href="uslugi.html">Usługi</a>
+        <a href="o-nas.html">O nas</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="umowienie.html">Umów realizację</a>
+      </nav>
+      <span class="footer-copy">© 2025 Twój Wymiar. Wszelkie prawa zastrzeżone.</span>
+    </div>
+  </footer>
+  <script src="common.js"></script>
+</body>
+</html>

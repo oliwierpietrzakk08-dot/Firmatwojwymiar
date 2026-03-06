@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Twój Wymiar – stolarnia na miarę</title>
+  <meta name="description" content="Kuchnie, łazienki, szafy i zabudowy na zamówienie. Projektowanie i montaż mebli dopasowanych do Twojej przestrzeni." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 76px);
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(201, 169, 110, 0.32), transparent 60%),
+        radial-gradient(900px 500px at 80% 60%, rgba(201, 169, 110, 0.18), transparent 60%),
+        linear-gradient(180deg, var(--bg-main) 0%, var(--bg-alt) 100%);
+      transform: translateY(var(--heroParallax, 0px));
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    [data-theme="dark"] .hero::before {
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(201, 169, 110, 0.22), transparent 62%),
+        radial-gradient(900px 500px at 85% 70%, rgba(201, 169, 110, 0.16), transparent 62%),
+        linear-gradient(180deg, var(--bg-main) 0%, var(--bg-alt) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 6.5rem 0 4.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-badge-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(201, 169, 110, 0.18);
+    }
+
+    .hero-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      font-weight: 600;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title .gold {
+      background: linear-gradient(90deg, #c9a96e, #e2c68b, #b08d6a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      font-size: 1.12rem;
+      color: var(--text-muted);
+      max-width: 40rem;
+      margin-bottom: 2.1rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .hero-note {
+      margin-top: 1.6rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-media {
+      position: relative;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle, rgba(201, 169, 110, 0.22), transparent 55%);
+      transform: translate3d(0, 0, 0);
+      pointer-events: none;
+    }
+
+    .hero-media-placeholder {
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, rgba(11, 11, 12, 0.06), rgba(201, 169, 110, 0.12));
+      transform-origin: center;
+      transition: transform 0.35s ease;
+    }
+
+    [data-theme="dark"] .hero-media-placeholder {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(201, 169, 110, 0.14));
+    }
+
+    .hero-media:hover .hero-media-placeholder {
+      transform: scale(1.04);
+    }
+
+    .hero-media-label {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.58);
+      backdrop-filter: blur(18px);
+      color: var(--text-main);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+    }
+
+    [data-theme="dark"] .hero-media-label {
+      background: rgba(11, 11, 12, 0.55);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .apple-section {
+      padding: 6rem 0;
+    }
+
+    .feature {
+      border-top: 1px solid var(--border);
+      padding: 4.5rem 0;
+    }
+
+    .feature-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .feature-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
+      font-weight: 700;
+    }
+
+    .feature-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.9rem;
+    }
+
+    .feature-text {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      line-height: 1.8;
+      max-width: 34rem;
+    }
+
+    .feature-media {
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: var(--bg-card);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-media > div {
+      aspect-ratio: 16/10;
+      background: linear-gradient(135deg, rgba(11, 11, 12, 0.06), rgba(201, 169, 110, 0.14));
+      transform-origin: center;
+      transition: transform 0.35s ease;
+    }
+
+    [data-theme="dark"] .feature-media > div {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(201, 169, 110, 0.16));
+    }
+
+    .feature-media:hover > div {
+      transform: scale(1.04);
+    }
+
+    .split-cta {
+      border-top: 1px solid var(--border);
+      padding: 5rem 0 6rem;
+      text-align: center;
+    }
+
+    .split-cta h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.1rem, 3.2vw, 3.2rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.7rem;
+    }
+
+    .split-cta p {
+      color: var(--text-muted);
+      max-width: 44rem;
+      margin: 0 auto 1.8rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-inner { padding: 5.5rem 0 3.5rem; }
+      .feature-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><div class="logo-mark"></div><span class="logo-text">Twój Wymiar</span></a>
+      <div class="nav-links">
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="uslugi.html" class="nav-link">Usługi</a>
+        <a href="o-nas.html" class="nav-link">O nas</a>
+        <a href="kontakt.html" class="nav-link">Kontakt</a>
+        <a href="umowienie.html" class="nav-link">Umów realizację</a>
+      </div>
+      <button class="theme-btn" id="themeBtn" aria-label="Zmień motyw">☀</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+  <main class="main">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-grid">
+          <div class="reveal">
+            <div class="hero-badge"><span class="hero-badge-dot"></span>Stolarnia premium na zamówienie</div>
+            <h1 class="hero-title">Twój dom. <span class="gold">Twój wymiar.</span></h1>
+            <p class="hero-text">
+              Kuchnie, łazienki, szafy i zabudowy, które wyglądają minimalistycznie, a działają perfekcyjnie.
+              Projekt + pomiar + montaż w jednym, w standardzie „jak z salonu”.
+            </p>
+            <div class="hero-actions">
+              <a href="umowienie.html" class="btn btn-primary">Umów realizację</a>
+              <a href="portfolio.html" class="btn btn-outline">Zobacz portfolio</a>
+            </div>
+            <div class="hero-note">Placeholdery: zdjęcia i dane można podmienić na końcu.</div>
+          </div>
+
+          <div class="hero-media reveal">
+            <div class="hero-media-placeholder" aria-hidden="true"></div>
+            <div class="hero-media-label">Placeholder wizualizacji (premium)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="apple-section">
+      <div class="container">
+        <div class="feature reveal">
+          <div class="feature-inner">
+            <div>
+              <div class="feature-eyebrow">Kuchnie</div>
+              <h2 class="feature-title">Czyste linie. Przemyślana funkcja.</h2>
+              <p class="feature-text">
+                Zabudowy pod sufit, ukryte sprzęty, cichy domyk i ergonomia, która robi różnicę każdego dnia.
+                Minimalistycznie w wyglądzie, maksymalnie w przechowywaniu.
+              </p>
+              <div style="margin-top: 1.4rem">
+                <a class="btn btn-outline" href="portfolio.html">Zobacz realizacje kuchni</a>
+              </div>
+            </div>
+            <div class="feature-media">
+              <div aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature reveal">
+          <div class="feature-inner">
+            <div class="feature-media">
+              <div aria-hidden="true"></div>
+            </div>
+            <div>
+              <div class="feature-eyebrow">Łazienki</div>
+              <h2 class="feature-title">Materiały, które znoszą codzienność.</h2>
+              <p class="feature-text">
+                Odporność na wilgoć, estetyczne detale i porządek bez kompromisów. Szafki, półki, zabudowy pralki –
+                w spójnym, eleganckim stylu.
+              </p>
+              <div style="margin-top: 1.4rem">
+                <a class="btn btn-outline" href="uslugi.html">Poznaj zakres usług</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature reveal">
+          <div class="feature-inner">
+            <div>
+              <div class="feature-eyebrow">Szafy & garderoby</div>
+              <h2 class="feature-title">Przestrzeń, która układa się sama.</h2>
+              <p class="feature-text">
+                Systemy przechowywania „od ściany do ściany” z podziałem, który ma sens: wieszaki, szuflady, półki,
+                światło i detale, które wyglądają jak premium.
+              </p>
+              <div style="margin-top: 1.4rem">
+                <a class="btn btn-outline" href="o-nas.html">Zobacz jak pracujemy</a>
+              </div>
+            </div>
+            <div class="feature-media">
+              <div aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature reveal">
+          <div class="feature-inner">
+            <div class="feature-media">
+              <div aria-hidden="true"></div>
+            </div>
+            <div>
+              <div class="feature-eyebrow">Zabudowy</div>
+              <h2 class="feature-title">Gdy gotowe rozwiązania nie pasują.</h2>
+              <p class="feature-text">
+                Zabudowy RTV, wnęki, skosy, obudowy i niestandardowe projekty. Jeśli da się to wymierzyć – da się to zrobić.
+              </p>
+              <div style="margin-top: 1.4rem">
+                <a class="btn btn-primary" href="umowienie.html">Umów pomiar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="split-cta reveal">
+          <h2>Chcesz zobaczyć, jak to będzie wyglądać u Ciebie?</h2>
+          <p>
+            Umów realizację i opowiedz, co chcesz zbudować. To formularz – bez automatycznego wysyłania (placeholder).
+            Po podpięciu backendu możesz go użyć produkcyjnie.
+          </p>
+          <div style="display:flex; gap:0.9rem; justify-content:center; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="umowienie.html">Umów realizację</a>
+            <a class="btn btn-outline" href="kontakt.html">Zobacz kontakt</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="index.html" class="logo"><div class="logo-mark"></div><span class="logo-text">Twój Wymiar</span></a>
+      <nav class="footer-links">
+        <a href="portfolio.html">Portfolio</a>
+        <a href="uslugi.html">Usługi</a>
+        <a href="o-nas.html">O nas</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="umowienie.html">Umów realizację</a>
+      </nav>
+      <span class="footer-copy">© 2025 Twój Wymiar. Wszelkie prawa zastrzeżone.</span>
+    </div>
+  </footer>
+  <script src="common.js"></script>
+  <script>
+    (function () {
+      // Apple-like reveals
+      const revealEls = document.querySelectorAll('.reveal');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach((el) => io.observe(el));
+
+      // Hero parallax background
+      function onScroll() {
+        const y = window.scrollY || 0;
+        const px = Math.min(0, -y * 0.18);
+        document.documentElement.style.setProperty('--heroParallax', px + 'px');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</body>
+</html>
