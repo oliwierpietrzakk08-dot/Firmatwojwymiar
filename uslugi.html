@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Usługi – Twój Wymiar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+    .service-card { background: var(--bg-card); border-radius: 12px; padding: 1.75rem; border: 1px solid var(--border); transition: transform 0.25s, border-color 0.25s; }
+    .service-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .service-icon { width: 48px; height: 48px; border-radius: 10px; background: rgba(166, 124, 82, 0.12); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; }
+    .service-title { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .service-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.75rem; line-height: 1.6; }
+    .service-price { font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+    .cta-box { text-align: center; margin-top: 2rem; }
+    .cta-box p { color: var(--text-muted); margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><div class="logo-mark"></div><span class="logo-text">Twój Wymiar</span></a>
+      <div class="nav-links">
+        <a href="portfolio.html" class="nav-link">Portfolio</a>
+        <a href="uslugi.html" class="nav-link active">Usługi</a>
+        <a href="o-nas.html" class="nav-link">O nas</a>
+        <a href="kontakt.html" class="nav-link">Kontakt</a>
+        <a href="umowienie.html" class="nav-link">Umów realizację</a>
+      </div>
+      <button class="theme-btn" id="themeBtn" aria-label="Zmień motyw">☀</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+  <main class="main">
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title">Usługi</h1>
+        <p class="section-subtitle">Co oferujemy</p>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">🍳</div>
+            <h2 class="service-title">Kuchnie</h2>
+            <p class="service-desc">Projektowanie i montaż kuchni na wymiar. Szafki, blaty, wyspy – wszystko dopasowane do Twojej przestrzeni.</p>
+            <span class="service-price">od 15 000 zł</span>
+          </article>
+          <article class="service-card">
+            <div class="service-icon">🚿</div>
+            <h2 class="service-title">Łazienki</h2>
+            <p class="service-desc">Zabudowy łazienkowe, szafki pod umywalkę, meble łazienkowe na zamówienie.</p>
+            <span class="service-price">od 8 000 zł</span>
+          </article>
+          <article class="service-card">
+            <div class="service-icon">🚪</div>
+            <h2 class="service-title">Szafy i garderoby</h2>
+            <p class="service-desc">Szafy wnękowe, garderoby, systemy przechowywania – maksymalne wykorzystanie przestrzeni.</p>
+            <span class="service-price">od 6 000 zł</span>
+          </article>
+          <article class="service-card">
+            <div class="service-icon">📐</div>
+            <h2 class="service-title">Zabudowy i obudowy</h2>
+            <p class="service-desc">Obudowy kominków, zabudowy pod schody, meble na wymiar do każdego wnętrza.</p>
+            <span class="service-price">od 4 000 zł</span>
+          </article>
+        </div>
+        <div class="cta-box">
+          <p>Chcesz poznać szczegóły i wycenę? Umów bezpłatną konsultację.</p>
+          <a href="umowienie.html" class="btn btn-primary">Umów realizację</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="index.html" class="logo"><div class="logo-mark"></div><span class="logo-text">Twój Wymiar</span></a>
+      <nav class="footer-links">
+        <a href="portfolio.html">Portfolio</a>
+        <a href="uslugi.html">Usługi</a>
+        <a href="o-nas.html">O nas</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="umowienie.html">Umów realizację</a>
+      </nav>
+      <span class="footer-copy">© 2025 Twój Wymiar. Wszelkie prawa zastrzeżone.</span>
+    </div>
+  </footer>
+  <script src="common.js"></script>
+</body>
+</html>

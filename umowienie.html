@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Umów realizację – Twój Wymiar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem 1rem; background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg-main) 100%); }
+    .umowienie-page { width: 100%; max-width: 480px; }
+    .umowienie-logo { text-align: center; margin-bottom: 2.5rem; }
+    .umowienie-logo a { display: inline-flex; align-items: center; gap: 0.5rem; }
+    .umowienie-logo .logo-mark { width: 40px; height: 40px; }
+    .umowienie-logo .logo-text { font-size: 1.5rem; }
+    .umowienie-card { background: var(--bg-card); border-radius: 16px; padding: 2rem; border: 1px solid var(--border); box-shadow: var(--shadow-lg); }
+    .umowienie-card h1 { font-family: "Cormorant Garamond", serif; font-size: 1.75rem; font-weight: 600; text-align: center; margin-bottom: 0.5rem; }
+    .umowienie-card .subtitle { text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.75rem; }
+    .umowienie-card .form-group { margin-bottom: 1.25rem; }
+    .umowienie-card .btn { width: 100%; padding: 1rem; margin-top: 0.5rem; }
+    .theme-btn-float { position: fixed; top: 1rem; right: 1rem; z-index: 50; }
+    .back-link { position: fixed; top: 1rem; left: 1rem; font-size: 0.9rem; color: var(--text-muted); z-index: 50; }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-link">← Strona główna</a>
+  <button class="theme-btn theme-btn-float" id="themeBtn" aria-label="Zmień motyw">☀</button>
+  <div class="umowienie-page">
+    <div class="umowienie-logo">
+      <a href="index.html"><div class="logo-mark"></div><span class="logo-text">Twój Wymiar</span></a>
+    </div>
+    <div class="umowienie-card">
+      <h1>Umów realizację</h1>
+      <p class="subtitle">Wypełnij formularz – skontaktujemy się w ciągu 24h</p>
+      <form id="umowienieForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="name">Imię i nazwisko *</label>
+          <input type="text" id="name" name="name" class="form-input" required placeholder="Jan Kowalski" />
+          <span class="form-error" id="nameError"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email *</label>
+          <input type="email" id="email" name="email" class="form-input" required placeholder="jan@example.com" />
+          <span class="form-error" id="emailError"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">Telefon *</label>
+          <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+48 123 456 789" />
+          <span class="form-error" id="phoneError"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="service">Rodzaj usługi</label>
+          <select id="service" name="service" class="form-select">
+            <option value="">Wybierz...</option>
+            <option value="kuchnia">Kuchnia</option>
+            <option value="lazienka">Łazienka</option>
+            <option value="szafa">Szafa / garderoba</option>
+            <option value="zabudowa">Zabudowa / obudowa</option>
+            <option value="inne">Inne</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="message">Opis projektu / pytania</label>
+          <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="Opisz krótko swój projekt lub pytanie..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Wyślij</button>
+      </form>
+    </div>
+  </div>
+  <script src="common.js"></script>
+  <script>
+    document.getElementById('umowienieForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name'), email = document.getElementById('email'), phone = document.getElementById('phone');
+      const nameError = document.getElementById('nameError'), emailError = document.getElementById('emailError'), phoneError = document.getElementById('phoneError');
+      nameError.textContent = emailError.textContent = phoneError.textContent = '';
+      let valid = true;
+      if (!name.value.trim() || name.value.trim().length < 2) { nameError.textContent = 'Podaj imię i nazwisko (min. 2 znaki)'; valid = false; }
+      if (!email.value.trim()) { emailError.textContent = 'Podaj adres email'; valid = false; }
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { emailError.textContent = 'Podaj poprawny adres email'; valid = false; }
+      if (!phone.value.trim() || phone.value.replace(/\s/g, '').length < 9) { phoneError.textContent = 'Podaj numer telefonu (min. 9 cyfr)'; valid = false; }
+      if (valid) { alert('Dziękujemy! Skontaktujemy się z Tobą w ciągu 24 godzin.'); this.reset(); }
+    });
+  </script>
+</body>
+</html>
